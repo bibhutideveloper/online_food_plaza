@@ -23,9 +23,9 @@ public class UserDaoImplUsingHibernate implements UserDao {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 	@Override
-	public UserDTO searchUser() {
+	public List<UserDTO> searchUser(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}

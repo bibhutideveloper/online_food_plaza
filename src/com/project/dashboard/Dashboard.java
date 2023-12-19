@@ -2,6 +2,7 @@ package com.project.dashboard;
 
 import java.util.Scanner;
 
+import com.project.controller.AdminController;
 import com.project.controller.CartController;
 import com.project.controller.OrderController;
 import com.project.controller.ProductController;
@@ -15,7 +16,7 @@ public class Dashboard {
 		
 		do {
 			System.out.println("Welcome to Dashboard\n======================");
-			System.out.println("1. Select 1 for User \n2. Select 2 for Products \n3. Select 3 for Cart \n4. Select 4 for Order \n5. Select 5 for Exit");
+			System.out.println("1. Select 1 for User \n2. Select 2 for Products \n3. Select 3 for Cart \n4. Select 4 for Order \n5. Select 5 for Admin \n6. Select 6 for Exit");
 			option = sc.nextInt();
 			switch(option) {
 			case 1: 
@@ -31,11 +32,14 @@ public class Dashboard {
 				new OrderController();
 				break;
 			case 5: 
-				System.out.println("5. Case 5 Executed \nExited Successfully");
+				new AdminController();
+				break;
+			case 6: 
+				System.out.println("6. Case 6 Executed \nExited Successfully");
 				sc.close();
 				System.exit(0);
 			}
-		}while(option !=5);
+		}while(option !=6);
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.BufferedReader;
@@ -92,7 +91,7 @@ public class UserController {
 		try {
 			isr = new InputStreamReader(System.in);
 			br = new BufferedReader(isr);
-			System.out.println("Enter Id: ");
+			System.out.println("Enter Id to update user: ");
 			int id = sc.nextInt();
 			System.out.println("Enter new name: ");
 			String name = br.readLine();
@@ -118,8 +117,6 @@ public class UserController {
 		try {
 			System.out.println("Enter email: ");
 			String email = sc.next();
-			UserDTO user = new UserDTO(email);
-			
 			List<UserDTO> users = userService.searchUser(email);
 			
 			for(UserDTO row : users) {
@@ -133,8 +130,8 @@ public class UserController {
 	private void showAllUser() {
 		List<UserDTO> users = userService.showAllUser();
 		
-		for(UserDTO user : users) {
-			System.out.println(user);
+		for(UserDTO userList : users) {
+			System.out.println(userList);
 		}
 	}
 }
