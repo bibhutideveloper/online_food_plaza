@@ -5,7 +5,7 @@ public class UserDTO {
 	private String name;
 	private String email;
 	private String password;
-		
+	
 	public UserDTO() {
 		
 	}
@@ -34,7 +34,7 @@ public class UserDTO {
 		super();
 		this.email = email;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -71,5 +71,6 @@ public class UserDTO {
 	public String toString() {
 		return "userDTO [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
 	}
+	
 	
 }

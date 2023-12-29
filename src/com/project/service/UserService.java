@@ -8,7 +8,6 @@ public interface UserService {
 	boolean saveUser(UserDTO user);
 	boolean updateUSer(UserDTO user);
 	boolean deleteUser(String email);
-//	UserDTO searchUser(String email);
-	List<UserDTO> searchUser(String email);
-	List<UserDTO> showAllUser();
+	List<UserDTO> searchUser(String email);	
+	List<UserDTO> showAllUser();	
 }

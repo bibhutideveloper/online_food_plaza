@@ -50,57 +50,13 @@ public class ProductDaoImplUsingJdbc implements ProductDao {
 	public boolean updateProduct(ProductDTO product) {
 		try {
 			con = DBConnection.getConnection();
-			StringBuilder query = new StringBuilder("UPDATE PRODUCT SET ");
 			
-			List<Object> productData = new ArrayList<>();
+			pstmt = con.prepareStatement("UPDATE PRODUCT SET PRODUCT_NAME= ?, PRODUCT_PRICE= ?, CATEGORY_ID= ? WHERE PRODUCT_ID= ?");
 			
-			if(product.getProductName() != null && !product.getProductName().equals("")) {
-				query.append("PRODUCT_NAME= ?, ");
-				productData.add(product.getProductName());
-			}
-			if(product.getProductPrice() != null) {
-				query.append("PRODUCT_PRICE= ?, ");
-				productData.add(product.getProductPrice());
-			}
-			if(product.getProductCtgId() != null) {
-				query.append("CATEGORY_ID= ?, ");
-				productData.add(product.getProductId());
-			}
-			
-			query.deleteCharAt(query.length()-2);			
-			query.append(" WHERE PRODUCT_ID= ?");
-			
-			pstmt = con.prepareStatement(query.toString());
-			System.out.println("1= "+query);
-			
-			int index = 1;
-			
-			for(Object data : productData) {
-				if (data instanceof String) {
-	                pstmt.setString(index++, (String) data);
-	            } else if (data instanceof Double) {
-	                pstmt.setDouble(index++, (Double) data);
-	            } else if (data instanceof Integer) {
-	                pstmt.setInt(index++, (Integer) data);
-	            }
-			}
-			
-			pstmt.setInt(index, product.getProductId());
-			
-//			if(product.getProductName() != null && !product.getProductName().equals("")) {
-//				pstmt.setString(index++, product.getProductName());
-//			}
-//			if(product.getProductPrice() != null) {
-//				pstmt.setDouble(index++, product.getProductPrice());
-//			}
-//			if(product.getProductCtgId() != null) {
-//				pstmt.setInt(index++, product.getProductCtgId());
-//			}
-//			if(product.getProductId() != null) {
-//				pstmt.setInt(index++, product.getProductId());
-//			}
-			
-			System.out.println("2= "+query);
+			pstmt.setString(1, product.getProductName());
+			pstmt.setDouble(2, product.getProductPrice());
+			pstmt.setInt(3, product.getProductCtgId());
+			pstmt.setInt(4, product.getProductId());
 			
 			int rows = pstmt.executeUpdate();
 			

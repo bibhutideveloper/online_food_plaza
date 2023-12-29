@@ -24,6 +24,7 @@ public class UserDaoImplUsingJdbc implements UserDao{
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement("INSERT INTO USERS(UNAME, UEMAIL, UPASSWORD) VALUES (?, ?, ?)");
 			
+			
 			pstmt.setString(1, user.getName());
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3, user.getPassword());
